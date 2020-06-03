@@ -67,12 +67,6 @@
 		<Compile Include="src\Properties\AssemblyInfo.cs" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="KeePass\KeePass\KeePass.csproj">
-	    <Project>{10938016-dee2-4a25-9a5a-8fd3444379ca}</Project>
-	    <Name>KeePass</Name>
-	  </ProjectReference>
-	</ItemGroup>
-	<ItemGroup>
 	  <Content Include=".gitignore" />
 	  <Content Include="keepass.version" />
 	  <Content Include="README.md" />

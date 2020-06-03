@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Install" type="RunNativeExe" factoryName="Native Executable">
+    <option name="EXE_PATH" value="$PROJECT_DIR$/../../../../../Windows/System32/cmd.exe" />
+    <option name="PROGRAM_PARAMETERS" value="/c copy &quot;bin\Debug\*&quot; &quot;C:\Program Files (x86)\KeePass Password Safe 2\Plugins\&quot;" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="PASS_PARENT_ENVS" value="1" />
+    <option name="USE_EXTERNAL_CONSOLE" value="0" />
+    <method v="2">
+      <option name="Build Solution" enabled="true" />
+    </method>
+  </configuration>
+</component>

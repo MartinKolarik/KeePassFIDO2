@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="KeePass" type="RunExe" factoryName=".NET Executable">
+    <option name="EXE_PATH" value="$PROJECT_DIR$/../../../../../Program Files (x86)/KeePass Password Safe 2/KeePass.exe" />
+    <option name="PROGRAM_PARAMETERS" value="" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bin/Debug" />
+    <option name="PASS_PARENT_ENVS" value="1" />
+    <option name="USE_EXTERNAL_CONSOLE" value="0" />
+    <option name="USE_MONO" value="0" />
+    <option name="RUNTIME_ARGUMENTS" value="" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Install" run_configuration_type="RunNativeExe" />
+    </method>
+  </configuration>
+</component>
