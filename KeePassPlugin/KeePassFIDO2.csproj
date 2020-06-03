@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		<ProjectGuid>{4938357E-DC8E-4A1D-B112-3432E1E1CD8D}</ProjectGuid>
+		<OutputType>Library</OutputType>
+		<AppDesignerFolder>Properties</AppDesignerFolder>
+		<RootNamespace>KeePassFIDO2</RootNamespace>
+		<AssemblyName>KeePassFIDO2</AssemblyName>
+		<TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+		<FileAlignment>512</FileAlignment>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\Debug\</OutputPath>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\Release\</OutputPath>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="KeePass, Version=2.45.0.21413, Culture=neutral, PublicKeyToken=fed2ed7716aecf5c">
+		  <HintPath>..\..\..\..\..\Program Files (x86)\KeePass Password Safe 2\KeePass.exe</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="mscorlib" />
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+		<Reference Include="System.Data" />
+		<Reference Include="System.Drawing" />
+		<Reference Include="System.Numerics" />
+		<Reference Include="System.Runtime.Serialization" />
+		<Reference Include="System.Windows.Forms" />
+		<Reference Include="System.Xml" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="src\DeviceCommunicator.cs" />
+		<Compile Include="src\DeviceCommunicatorData.cs" />
+		<Compile Include="src\DeviceCommunicatorResult.cs" />
+		<Compile Include="src\FIDO2KeyProvider.cs" />
+		<Compile Include="src\FIDO2OptionsForm.cs">
+		  <SubType>Form</SubType>
+		</Compile>
+		<Compile Include="src\FIDO2OptionsForm.Designer.cs">
+		  <DependentUpon>FIDO2OptionsForm.cs</DependentUpon>
+		</Compile>
+		<Compile Include="src\KeePassFIDO2Ext.cs" />
+		<Compile Include="src\PinForm.cs">
+		  <SubType>Form</SubType>
+		</Compile>
+		<Compile Include="src\PinForm.Designer.cs">
+		  <DependentUpon>PinForm.cs</DependentUpon>
+		</Compile>
+		<Compile Include="src\Properties\AssemblyInfo.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="KeePass\KeePass\KeePass.csproj">
+	    <Project>{10938016-dee2-4a25-9a5a-8fd3444379ca}</Project>
+	    <Name>KeePass</Name>
+	  </ProjectReference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include=".gitignore" />
+	  <Content Include="keepass.version" />
+	  <Content Include="README.md" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="src\FIDO2OptionsForm.resx">
+	    <DependentUpon>FIDO2OptionsForm.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="src\PinForm.resx">
+	    <DependentUpon>PinForm.cs</DependentUpon>
+	  </EmbeddedResource>
+	</ItemGroup>
+	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+	<!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+		 Other similar extension points exist, see Microsoft.Common.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>

@@ -1,0 +1,12 @@
+/.local/
+/bin/
+/KeePass/
+/obj/
+/packages/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
