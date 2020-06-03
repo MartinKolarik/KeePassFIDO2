@@ -1,0 +1,4 @@
+/.local/
+/cmake-build-debug/
+/cmake-build-release/
+/include/
