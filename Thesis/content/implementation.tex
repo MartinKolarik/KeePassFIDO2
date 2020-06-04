@@ -71,8 +71,8 @@ administrator privileges, breaking the principle of least privilege\footnote{
 Second, because libfido2 is an unmanaged DLL written in C, we would need to create a wrapper class acting as an
 intermediary between the unmanaged \glsxtrshort{dll}, and the managed C\# code~\cite{microsoft:unmanaged-dll}.
 
-By implementing the device communicator as a separate executable, we allow the plugin\textemdash and consequently, KeePass
-\textemdash to run under a regular account and greatly reduce the amount of code running in a privileged context.
+By implementing the device communicator as a separate executable, we allow the plugin\textemdash and consequently,
+KeePass\textemdash to run under a regular account and greatly reduce the amount of code running in a privileged context.
 
 The plugin module extends the KeePass user interface by adding a new entry "KeePassFIDO2 Options" to the "Tools" menu. After selecting this entry,
 the user can associate a new authenticator with the currently open database. To do so, they need to click the corresponding button
