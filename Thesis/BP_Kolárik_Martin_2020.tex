@@ -1,0 +1,147 @@
+% options:
+% thesis=B bachelor's thesis
+% thesis=M master's thesis
+% czech thesis in Czech language
+% english thesis in English language
+% hidelinks remove colour boxes around hyperlinks
+
+\documentclass[thesis=B,english,hidelinks,table,12pt]{template/FITthesis}[2019/12/23]
+\OnehalfSpacing
+\raggedbottom % no huge vertical whitespace between elements on short pages
+
+\usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
+% \usepackage[latin2]{inputenc} % LaTeX source encoded as ISO-8859-2
+% \usepackage[cp1250]{inputenc} % LaTeX source encoded as Windows-1250
+
+% \usepackage{subfig} % subfigures
+% \usepackage{amsmath} % advanced maths
+% \usepackage{amssymb} % additional math symbols
+
+% empty lines between paragraphs
+\setlength{\parindent}{0pt}
+\abnormalparskip{\baselineskip}
+
+\usepackage{dirtree} % directory tree visualisation
+\usepackage[T1]{fontenc} % 8-bit font encoding
+\usepackage[hypcap=true]{caption} % fix for figure and table label positioning in PDF
+\captionsetup[figure]{belowskip=-\baselineskip} % fix for too much space when combined with \abnormalparskip
+
+% list page breaks and margins
+\usepackage{enumitem}
+\newlength\docparskip
+\setlength{\docparskip}{\parskip}
+\setlist[1]{before={\parskip=0pt},after={\vspace{-\docparskip}}}
+\setlist{beginpenalty=10000}
+
+% pretty printing source code
+\usepackage[outputdir=auxil]{minted}
+\setminted{autogobble=true,tabsize=4,fontsize=\footnotesize}
+
+% quotes style
+\usepackage[vskip=0pt,rightmargin=0pt]{quoting} % block quotes
+\usepackage[autostyle,english=american]{csquotes} % inline quotes
+\MakeOuterQuote{"}
+
+% glossaries
+%\usepackage{graphicx}
+\usepackage[acronym,nonumberlist,toc,numberedsection=autolabel,docdef=restricted]{glossaries-extra}
+%\usepackage{hyperref}
+\makeglossaries
+\glssetcategoryattribute{general}{glossdesc}{firstuc}
+\setabbreviationstyle[acronym]{long-short}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% EDIT THIS
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+\department{Department of Software Engineering}
+\title{FIDO2 KeePass Plugin}
+\authorGN{Martin} % author's given name/names
+\authorFN{Kolárik} % author's surname
+\author{Martin Kolárik} % author's name without academic degrees
+\authorWithDegrees{Martin Kolárik} % author's name with academic degrees
+\supervisor{Ing. Jiří Dostál, Ph.D.}
+\placeForDeclarationOfAuthenticity{Prague}
+
+\acknowledgements{I would like to thank my supervisor Ing. Jiří Dostál, Ph.D.
+for his interest in this topic and the provided support.}
+
+\abstractEN{This thesis explores the possibilities of using FIDO2 devices as a replacement for master passwords
+in password managers. It describes the capabilities and current limitations of FIDO2, specifies
+the design goals that the final implementation should meet, and discusses four implementation approaches.
+In the implementation chapter, it continues to further describe the chosen approach, architectural decisions,
+and the encountered challenges. The final part is testing, which verifies that the design goals were met.
+As a whole, the thesis is a useful reference for anyone attempting to utilize FIDO2 in password managers
+or similar environments.}
+
+\abstractCS{Táto práca skúma možnosti využitia FIDO2 zariadení ako náhradu pre hlavné heslo v správcoch
+hesiel. Popisuje možnosti a obmedzenia FIDO2, určuje hlavné charakteristiky, ktoré by výsledná implementácia
+mala spĺňať a diskutuje štyri postupy implementácie. V implementačnej časti ďalej popisuje zvolený postup,
+architektonické rozhodnutia a objavené problémy. Finálnou časťou je testovanie, ktoré overuje, že implementácia
+spĺňa predtým stanovené ciele. Ako celok je táto práca užitočným zdrojom informácií pre kohokoľvek pokúšajúceho
+sa využiť FIDO2 v správcovi hesiel alebo podobnom prostredí.
+}
+
+\keywordsCS{FIDO2, WebAuthn, KeePass, správca hesiel, bezpečnostný kľúč, prihlásenie bez hesla}
+\keywordsEN{FIDO2, WebAuthn, KeePass, password manager, security key, passwordless login}
+\declarationOfAuthenticityOption{1} % select as appropriate, according to the desired license (integer 1-6)
+\website{https://github.com/MartinKolarik/KeePassFIDO2} % optional thesis URL
+
+% Loaded inside \AtBeginDocument so that autoquotes work: https://tex.stackexchange.com/questions/430111/glossaries-and-csquotes-how-to-use-autoquotes-in-gls-description
+\AtBeginDocument{
+\input{glossaries/acronyms}
+\input{glossaries/glossary}
+}
+
+\begin{document}
+	\setsecnumdepth{part}
+
+	\chapter{Introduction}\label{ch:introduction}
+	\input{content/introduction}
+
+	\setsecnumdepth{all}
+
+	\chapter{State-of-the-art}\label{ch:state-of-the-art}
+	\input{content/state-of-the-art}
+
+	\chapter{Analysis and design}\label{ch:analysis-and-design}
+	\input{content/analysis-and-design}
+
+	\chapter{Implementation}\label{ch:implementation}
+	\input{content/implementation}
+
+	\chapter{Testing}\label{ch:testing}
+	\input{content/testing}
+
+	\setsecnumdepth{part}
+
+	\chapter{Conclusion}\label{ch:conclusion}
+	\input{content/conclusion}
+
+	\bibliographystyle{template/iso690}
+	\bibliography{mybibliographyfile}
+
+	\setsecnumdepth{all}
+	\appendix
+
+	\setglossarystyle{alttree}
+	\glsfindwidesttoplevelname[acronym]
+	\printglossary[type=acronym]
+
+	\glossariesextrasetup{postdot}
+	\setglossarystyle{altlist}
+	\printglossary
+
+	\chapter{Contents of the enclosed SD card}\label{ch:contents-of-the-enclosed-sd-card}
+
+	\begin{figure}
+		\dirtree{%
+			.1 README.md\DTcomment{contents description}.
+			.1 KeePassFIDO2-v1.0.0.zip\DTcomment{plugin binaries}.
+			.1 DeviceCommunicator\DTcomment{source code of the communicator module}.
+			.1 KeePassPlugin\DTcomment{source code of the plugin}.
+			.1 Thesis\DTcomment{\LaTeX{} source code of the thesis}.
+			.2 BP\_Kolárik\_Martin\_2020.pdf\DTcomment{PDF version of the thesis}.
+		}
+	\end{figure}
+\end{document}

@@ -1,0 +1,107 @@
+\newglossaryentry{database}
+{
+	name = database,
+	description = {generally, an organized collection of data. In this work, database refers specifically to the file in which KeePass stores usernames, passwords, and other associated data}
+}
+
+\newglossaryentry{master key}
+{
+	name = master key,
+	description = {an encryption key based on one or more key sources}
+}
+
+\newglossaryentry{key source}
+{
+	name = key source,
+	description = {a master password, key file, or other secret data}
+}
+
+\newglossaryentry{plgx}
+{
+	name = PLGX,
+	description = {an optional plugin file format for KeePass $\geq$ 2.09. Instead of compiling the plugin to a DLL file, the plugin source code files are packed into a PLGX file and KeePass compiles them itself when the plugin is first loaded~\cite{keepass:plugin-development}}
+}
+
+\newglossaryentry{Windows Hello}
+{
+	name = Windows Hello,
+	description = {a technology that adds alternative way to authenticate into Windows and applications using a fingerprint, iris scan, facial recognition, a short PIN, or other method}
+}
+
+\newglossaryentry{OpenPGP}
+{
+	name = OpenPGP,
+	description = {an email encryption standard defined by the OpenPGP Working Group of the Internet Engineering Task Force (IETF) as a Proposed Standard in RFC 4880}
+}
+
+\newglossaryentry{Windows Credential Manager}
+{
+	name = Windows Credential Manager,
+	description = {a place where Windows and other apps using its API store credentials scoped to a specific Windows account}
+}
+
+\newglossaryentry{rp}
+{
+	name = relying party,
+	description = {an entity whose application utilizes the WebAuthn API}
+}
+
+\newglossaryentry{authenticator}
+{
+	name = authenticator,
+	description = {a cryptographic entity that handles generating and storing keys, and performing cryptographic operations}
+}
+
+\newglossaryentry{roaming authenticator}
+{
+	name = roaming authenticator,
+	description = {a roaming authenticator is attached using cross-platform transports, removable, and can "roam" among client devices}
+}
+
+\newglossaryentry{platform authenticator}
+{
+	name = platform authenticator,
+	description = {an authenticator that is attached using a client device-specific transport and is usually not removable}
+}
+
+\newglossaryentry{TPM}
+{
+	name = TPM,
+	description = {a secure crypto-processor that is designed to carry out cryptographic operations and store cryptographic keys}
+}
+
+\newglossaryentry{FIDO Alliance}
+{
+	name = FIDO Alliance,
+	description = {an open industry association focused on authentication standards that aim to reduce the use of passwords. Members include many large technology companies, such as Amazon, Apple, Google, or Microsoft}
+}
+
+\newglossaryentry{client}
+{
+	name = client,
+	description = {an entity that acts as an intermediary between the relying party and the authenticator (typically a web browser or a similar application)}
+}
+
+\newglossaryentry{client device}
+{
+	name = client device,
+	description = {a hardware device on which the client runs, e.g., a smartphone or a laptop}
+}
+
+\newglossaryentry{user verification}
+{
+	name = user verification,
+	description = {a process by which the authenticator locally authorizes the invocation of its operations. User verification may be instigated through, for example, a touch plus pin code, password entry, or biometric recognition}
+}
+
+\newglossaryentry{resident credential}
+{
+	name = resident credential,
+	description = {a credential whose private key is stored in the authenticator, client, or client device}
+}
+
+\newglossaryentry{challenge}
+{
+	name = challenge,
+	description = {a randomly generated piece of data that the authenticator is expected to sign}
+}

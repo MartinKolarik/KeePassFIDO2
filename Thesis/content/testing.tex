@@ -1,0 +1,107 @@
+Testing is an important part of the software development process, even more so in case
+of software handling sensitive data. The core of our implementation, however, is based
+on using external hardware devices, which were specifically designed to confirm every
+operation with the user before performing it. That makes it impossible to write fully
+automated tests. Writing automated tests only for the parts that do not directly interact
+with the authenticator, or mocking\footnote{A technique of replacing one part of real
+implementation with a "fake" version during testing, with the goal of making another
+part easier to test.} the functions that perform the communication makes little sense
+because such tests would not cover the most critical parts of the code.
+
+For these reasons, we include test cases for manual testing, which can be easily
+performed by any user of the plugin. These test cases are written in such a way that
+they can also serve as a user manual.
+
+All cases assume a default configuration of Windows 10, version 1903 or higher (mainly, default \glsxtrshort{uac} settings),
+default KeePass configuration, and a single authenticator connected via USB. All cases start with KeePass running and no database open.
+
+Note that at this time, a single authenticator can only hold a key for one database.
+Adding a key for a new database (as done in some of these tests) overwrites any other
+key previously stored on the authenticator.
+
+\setlist[1]{before={\parskip=\docparskip},after={\vspace{-\docparskip}}}
+
+\section{Positive tests}\label{sec:positive-tests}
+
+This section describes test cases for the intended usage scenarios.
+Note that these cases are written for a database protected by a master password. To test with a database
+protected by a key file, the same steps apply, except any instruction to enter the password
+is changed to choose the key file.
+
+\subsection{Add a key for a new database}\label{subsec:add-a-key-for-a-new-database}
+
+\begin{enumerate}
+	\item Create a new KeePass database.
+	\item In the "Create Composite Master Key" dialogue, fill in "123" as master password.
+	\item Go to Tools $\rightarrow$ Options $\rightarrow$ KeePassFIDO2 and click "Add a new FIDO key".
+	\item Enter your authenticator PIN when prompted (if configured), and click "Submit".
+	\item Confirm the UAC prompt for "DeviceCommunicator.exe".
+	\item Perform user presence/verification check as requested by the authenticator.
+\end{enumerate}
+
+\textbf{Expected result:}
+A message confirming the key was added appears in the "KeePassFIDO2 Options" window.
+
+\subsection{Unlock a database using the authenticator}\label{subsec:unlock-a-database-using-the-authenticator}
+
+\begin{enumerate}
+	\item Open the database created in \autoref{subsec:add-a-key-for-a-new-database}.
+	\item In the "Open Database" dialogue, select "Key File: FIDO2 Key Provider" as unlock method and click "OK".
+	\item Enter your authenticator PIN when prompted (if configured), and click "Submit".
+	\item Confirm the UAC prompt for "DeviceCommunicator.exe".
+	\item Perform user presence/verification check as requested by the authenticator.
+\end{enumerate}
+
+\textbf{Expected result:}
+The database was unlocked.
+
+\subsection{Unlock a database using the original method}\label{subsec:unlock-a-database-using-the-original-method}
+
+\begin{enumerate}
+	\item Open the database created in \autoref{subsec:add-a-key-for-a-new-database}.
+	\item In the "Open Database" dialogue, select "Master Password", type "123" and click "OK".
+\end{enumerate}
+
+\textbf{Expected result:}
+The database was unlocked.
+
+\section{Negative tests}\label{sec:negative-tests}
+
+This section describes steps to test that common error situations are correctly handled.
+
+\subsection{No database open}\label{subsec:no-database-open}
+
+\begin{enumerate}
+	\item With no database open, go to Tools $\rightarrow$ Options $\rightarrow$ KeePassFIDO2 and click "Add a new FIDO key".
+\end{enumerate}
+
+\textbf{Expected result:}
+An error message is shown, saying that a database needs to be open first.
+
+\subsection{Error while adding a new key}\label{subsec:error-while-adding-a-new-key}
+
+\begin{enumerate}
+	\item Open the database created in \autoref{subsec:add-a-key-for-a-new-database}.
+	\item In the "Open Database" dialogue, select "Master Password", type "123" and click "OK".
+	\item Go to Tools $\rightarrow$ Options $\rightarrow$ KeePassFIDO2 and click "Add a new FIDO key".
+	\item Disconnect the authenticator from the computer.
+	\item Submit the "FIDO2 PIN" dialogue.
+	\item Confirm the UAC prompt for "DeviceCommunicator.exe".
+\end{enumerate}
+
+\textbf{Expected result:}
+An error message is shown, including a device communicator exit code.
+
+
+\subsection{Error while unlocking the database}\label{subsec:error-while-unlocking-the-database}
+
+\begin{enumerate}
+	\item Open the database created in \autoref{subsec:add-a-key-for-a-new-database}.
+	\item In the "Open Database" dialogue, select "Key File: FIDO2 Key Provider" as unlock method and click "OK".
+	\item Disconnect the authenticator from the computer.
+	\item Submit the "FIDO2 PIN" dialogue.
+	\item Confirm the UAC prompt for "DeviceCommunicator.exe".
+\end{enumerate}
+
+\textbf{Expected result:}
+An error message is shown, including a device communicator exit code.

@@ -1,0 +1,31 @@
+As a first step, this thesis was meant to analyze the possibilities provided by the
+KeePass plugin system and review the implementations of existing key provider plugins. This
+analysis was covered in \autoref{section:keepass-password-manager} and could be summarized by
+saying that KeePass has a flexible, well-documented plugin system, which allows implementing
+alternative database unlock methods.
+
+As a second step, we aimed to analyze the capabilities of FIDO2 and design a suitable approach
+to implementing a key provider plugin utilizing a FIDO2 device, with a focus on security and ease of use.
+We analyzed the FIDO2 specifications in \autoref{sec:fido2}, specified the key design goals on
+a technical level in \autoref{sec:design-goals}, and then discussed four implementation approaches
+to achieve them in \autoref{sec:implementation-options}.
+
+We found that the first two implementation options, which would otherwise be the most suitable ones,
+are not possible due to the limited capabilities of FIDO2 devices. Later, we found that the
+third option would only work with some authenticators, which opted not to implement one of
+the features of the FIDO2 specifications. This left us the fourth option as the only one
+that should work with any device.
+
+In \autoref{ch:implementation}, we fulfilled the final goal, which was implementing
+the KeePass plugin. We have found, however, that due to restrictions on access to FIDO2
+devices in the recent versions of Windows, the plugin will only work when running
+under a privileged account. In \autoref{ch:test-cases}, we described test cases,
+which can be used to verify the plugin functions correctly.
+
+Even though the work meets all initial goals and was done in the "best possible" way,
+there were many technical obstacles that forced us to use subpar solutions to some
+problems, for the lack of better options. For that reason, we consider the most
+notable result of this work to be the detailed analysis of the current options.
+
+Future versions of FIDO specifications or new versions of the native Windows API may solve
+some of the current issues and allow a better implementation approach.

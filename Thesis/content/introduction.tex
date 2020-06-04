@@ -1,0 +1,50 @@
+Passwords have been in use as a primary method of authentication in computer systems for decades.
+They are a well-understood concept by both the engineers implementing those systems and by the end-users.
+
+Still, they come with several problems.
+With the computational power of today's hardware, they need to be long and complex to be secure,
+which makes them hard to remember and annoying to type.
+The problem with remembering becomes significantly worse upon the realization that an average person may use tens of different services,
+each of which should be protected by a different password.
+Of course, it is almost impossible to remember that many passwords, which is why most people tend to use just one, or a few passwords everywhere.
+This practice presents a significant security risk, because compromising just one system may lead to compromising all other systems where the same password
+is used by the given user and could be seen as one of the main arguments for moving to a different form of authentication.
+
+There have been many attempts to find a suitable replacement over the years and predictions of passwords going away.
+For example, Bill Gates made such a prediction already in 2004, and in 2011, IBM predicted that "you will never need a password again" within five years.
+Yet, it is 2020, and passwords are still the primary method of authentication in most systems.
+None of the possible replacements, such as digital certificates, one-time login links, biometrics, or single sign-on systems,
+managed to combine the relative ease-of-use, security, cost-effectiveness, and ease of implementation and deployment.
+
+Since passwords have been in wide use for a long time, solutions that aim not to replace them,
+but rather remove some of their problems, were developed. Password managers\textemdash applications designed
+to securely store all user's passwords in an encrypted form\textemdash solve the issue with passwords
+reuse by removing the need to remember them, and may even provide better user experience by automatically filling in the correct credentials in most environments.
+They are usually protected by another password themselves\textemdash a master password\textemdash which is the only password the user needs to remember.
+
+The idea of replacing passwords altogether has not been lost, though,
+and one of the most recent news in this area is FIDO2. A project by the FIDO Alliance\textemdash an open industry association with members including
+many large technology companies, such as Amazon, Apple, Google, or Microsoft\textemdash and World Wide Web Consortium\textemdash
+an organization responsible for creating standards for the World Wide Web.
+
+FIDO2 uses authenticators\textemdash small devices similar to flash keys\textemdash
+which are able to securely generate, store, and later find and use the correct credentials for each service,
+while completely hiding the technical aspects from the end-users.
+
+This approach provides several advantages over passwords, including complete elimination of phishing attack,
+while keeping a great level of usability\textemdash from the users' perspective, using the device involves only connecting it to the computer and unlocking it with a short PIN when prompted.
+
+The current issue with FIDO2 is that being a very new technology\textemdash de\-sig\-na\-ted as an official web standard in March 2019\textemdash even if it becomes successful,
+it will take years before the majority of online services supports it and before the whole ecosystem around it develops.
+
+Nevertheless, having a large list of big organizations behind it, and being focused on
+all the aforementioned problems of alternatives (ease-of-use, security, cost-effectiveness, and ease deployment),
+it has great potential.
+
+The goal of this thesis is, therefore, exploring the possibilities of combining the FIDO2 technology with passwords managers
+to provide a solution that works today,
+and makes it easy to gradually move beyond passwords, as the support for FIDO2 increases.
+
+Specifically, the thesis analyzes the capabilities of FIDO2 and KeePass password manager
+(similar concepts should apply to other passwords managers as well), discusses the options
+of replacing master passwords with FIDO2 devices, and provides a proof-of-concept implementation.

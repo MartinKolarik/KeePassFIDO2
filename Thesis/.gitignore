@@ -1,0 +1,5 @@
+/.local/
+/auxil/
+/out/
+/template/
+*.synctex.gz

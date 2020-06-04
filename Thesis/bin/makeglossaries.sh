@@ -1,0 +1,1 @@
+makeglossaries -d auxil $@
